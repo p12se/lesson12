@@ -1,0 +1,12 @@
+PUT _ingest/pipeline/spetrov_pipeline
+{
+ "description" : "spetrov pipeline",
+ "processors": [
+   {
+     "grok": {
+       "field": "message",
+       "patterns": ["time=\"%{TIMESTAMP_ISO8601:timestamp}\" level=%{LOGLEVEL:loglevel} msg=\"%{DATA:message}\""]
+     }
+   }
+ ]
+}
